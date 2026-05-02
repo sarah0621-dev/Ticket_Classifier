@@ -1,4 +1,8 @@
 import csv
+import datetime
+
+# Set time
+today = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Import tickets.csv file
 with open("ticket_classifier/tickets.csv","r") as f:
@@ -48,9 +52,9 @@ if ticket_num in dic :
         ticket_list.append([dic.get(ticket_num), priority])
 
     # store csv 
-    with open("tickets.csv", "a" , newline="") as f :
+    with open("ticket_classifier/tickets.csv", "a" , newline="") as f :
         writer = csv.writer(f)
-        writer.writerow([dic.get(ticket_num),priority])
+        writer.writerow([dic.get(ticket_num),priority, today])
     
 else :
     print("Worng ticket number, Please Try again")

@@ -20,7 +20,7 @@ urgent_num = 0
 for ticket in tickets :
     if len(ticket) < 2 :
         continue
-    if ticket[1] == "urgent" :
+    if ticket[2] == "urgent" :
         urgent_num += 1
         
 normal_num = 0
@@ -28,14 +28,43 @@ normal_num = 0
 for ticket in tickets :
     if len(ticket) < 2 :
         continue
-    if ticket[1] == "normal" :
+    if ticket[2] == "normal" :
         normal_num += 1
 
+# Counting Category         
+network_count_num = 0
+password_count_num = 0
+printer_count_num = 0
+software_count_num = 0
+hardware_count_num = 0
 
+
+for ticket in tickets :
+    if ticket[1] == "network" :
+        network_count_num +=1 
+    elif ticket[1] == "password" :
+        password_count_num +=1
+    elif ticket[1] == "printer" :
+        printer_count_num += 1
+    elif ticket[1] == "software" :
+        software_count_num += 1
+    elif ticket[1] == "hardware" :    
+        hardware_count_num += 1
+
+
+# Report 
 print("{:-^30}".format("REPORT"))
 print("Total tickets : " + str(total))
 print("Urgent :"  + str(urgent_num))
 print("Normal :"   + str(normal_num))
+
+# Category
+print("{:-^30}".format("Category"))
+print("Network : " + str(network_count_num))
+print("Password :"  + str(password_count_num))
+print("Printer :"   + str(printer_count_num))
+print("Software :"   + str(software_count_num))
+print("HardWare :"   + str(hardware_count_num))
 print("{:-^30}".format(""))
 
 

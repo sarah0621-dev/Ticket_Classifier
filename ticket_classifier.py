@@ -5,22 +5,30 @@ import datetime
 today = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Import tickets.csv file
-with open("ticket_classifier/tickets.csv","r") as f:
+with open("tickets.csv","r") as f:
     reader = csv.reader(f)
-    tickets = list(reader)
+    # No counting empty row
+    tickets = [row for row in reader if row]
     
 total = len(tickets)
+
+# Generate Ticket ID
+ticket_id = "TKT-" + str(total +1).zfill(3)
+
 urgent_num = 0 
 
-
 for ticket in tickets :
-    if(ticket[1]) == "urgent" :
+    if len(ticket) < 2 :
+        continue
+    if ticket[1] == "urgent" :
         urgent_num += 1
         
 normal_num = 0
 
 for ticket in tickets :
-    if(ticket[1]) == "normal" :
+    if len(ticket) < 2 :
+        continue
+    if ticket[1] == "normal" :
         normal_num += 1
 
 
@@ -43,7 +51,6 @@ problem = str(input("=>"))
 ticket_list = []
 
 if ticket_num in dic :
-    print(dic.get(ticket_num) + " problem")
     if any(keyword in problem for keyword in urgent_keywords)  :
         priority = "urgent"
         ticket_list.append([dic.get(ticket_num), priority])
@@ -51,10 +58,10 @@ if ticket_num in dic :
         priority = "normal"
         ticket_list.append([dic.get(ticket_num), priority])
 
-    # store csv 
-    with open("ticket_classifier/tickets.csv", "a" , newline="") as f :
+    # Store csv 
+    with open("tickets.csv", "a" , newline="") as f :
         writer = csv.writer(f)
-        writer.writerow([dic.get(ticket_num),priority, today])
+        writer.writerow([ticket_id,dic.get(ticket_num),priority, today])
     
 else :
     print("Worng ticket number, Please Try again")

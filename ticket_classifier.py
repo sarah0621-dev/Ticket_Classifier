@@ -71,7 +71,14 @@ print("{:-^30}".format(""))
 dic = {"1":"network", "2":"password", "3":"printer", "4" :"software", "5":"hardware"}
 print("{:-^30}".format("Please, Write down your ticket number"))
 print("1.nework 2.password 3.printer 4.software 5.hardware")
-ticket_num = str(input("=>"))
+
+# Validation 
+while True :
+    ticket_num = str(input("=>"))
+    if ticket_num in dic :
+        break
+    else : 
+        print("Wrong number, Please try again")
 
 urgent_keywords = ["urgent", "not working", "down" , "failed" , "entire", "all","cannot access"]
 print("{:-^30}".format("Please, Describe your problem"))

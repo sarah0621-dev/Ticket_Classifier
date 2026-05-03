@@ -68,7 +68,7 @@ print("HardWare :"   + str(hardware_count_num))
 print("{:-^30}".format(""))
 
 # Search ID
-search_id = str(input("Search ticekt ID (or press Enter to skip) : "))
+search_id = input("Search ticekt ID (or press Enter to skip) : ")
 
 if search_id : 
     for ticket in tickets :

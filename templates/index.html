@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Helpdesk Ticket Classifier</h1>
+    <h2>Total: {{ total }}</h2>
+    <h2>Urgent: {{ urgent }}</h2>
+    <h2>Normal: {{ normal }}</h2>
+    <form action="/submit" method="POST">
+    <select name="ticket_num">
+        <option value="1">Network</option>
+        <option value="2">Password</option>
+        <option value="3">Printer</option>
+        <option value="4">Software</option>
+        <option value="5">Hardware</option>
+    </select>
+    <input type="text" name="problem" placeholder="Describe your problem">
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

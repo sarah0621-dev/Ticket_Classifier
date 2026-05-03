@@ -67,7 +67,17 @@ print("Software :"   + str(software_count_num))
 print("HardWare :"   + str(hardware_count_num))
 print("{:-^30}".format(""))
 
+# Search ID
+search_id = str(input("Search ticekt ID (or press Enter to skip) : "))
 
+if search_id : 
+    for ticket in tickets :
+        if ticket[0] == search_id:
+            print("-> Category : " + ticket[1] + "| Priority :" + ticket[2] + "| Date :" + ticket[3])
+            break
+    else : 
+            print("Ticket not found")
+            
 dic = {"1":"network", "2":"password", "3":"printer", "4" :"software", "5":"hardware"}
 print("{:-^30}".format("Please, Write down your ticket number"))
 print("1.nework 2.password 3.printer 4.software 5.hardware")
